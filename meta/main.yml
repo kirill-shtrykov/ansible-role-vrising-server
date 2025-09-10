@@ -1,0 +1,18 @@
+---
+dependencies:
+  - steamcmd
+  - winehq
+
+galaxy_info:
+  author: Kirill Shtrykov
+  role_name: vrising_server
+  description: Ansible role for V Rising dedicated server configuration
+  license: MIT
+  min_ansible_version: '2.17'
+  platforms:
+    - name: Debian
+      versions:
+        - bookworm    # 12
+  galaxy_tags:
+    - steam
+    - games

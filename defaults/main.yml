@@ -1,0 +1,57 @@
+---
+vrising_server_app_id: 1829350
+vrising_server_client_id: 1604030
+vrising_server_dir: "{{ steamcmd_user_home }}/vrising"
+vrising_server_data_dir: "{{ vrising_server_dir }}/data"
+vrising_server_name: Zabegalovka
+vrising_server_description: PvE private server
+vrising_server_port: 27015
+vrising_server_query_port: 27016
+vrising_server_max_connected_users: 40
+vrising_server_max_connected_admins: 4
+vrising_server_clan_size: 4
+vrising_server_fps: 30
+vrising_server_save_name: world1
+vrising_server_game_mode_type: PvP
+vrising_server_blood_bound_equipment: true
+vrising_server_teleport_bound_items: true
+vrising_server_bat_bound_items: false
+
+# Interval
+# Defines the time between the war events (Incursions)
+# Possible values:
+#   Minimum      = 0  - 30 minutes
+#   VeryShort    = 1  - 1 hour
+#   Short        = 2  - 1 hour 30 minutes
+#   Medium       = 3  - 2 hours
+#   Long         = 4  - 4 hours
+#   VeryLong     = 5  - 8 hours
+#   Extensive    = 6  - 12 hours
+#   Maximum      = 7  - 24 hours
+vrising_server_war_event_game_settings_interval: 1
+
+# MajorDuration
+# Defines the length of the major war events (Major Incursions)
+# Possible values:
+#   Minimum      = 0  - 15 minutes
+#   VeryShort    = 1  - 20 minutes
+#   Short        = 2  - 25 minutes
+#   Medium       = 3  - 30 minutes
+#   Long         = 4  - 35 minutes
+#   VeryLong     = 5  - 45 minutes
+#   Extensive    = 6  - 1 hour
+#   Maximum      = 7  - 2 hours
+vrising_server_war_event_game_settings_major_duration: 1
+
+# MinorDuration
+# Defines the length of the minor war events (Minor Incursions)
+# Possible values:
+#   Minimum      = 0  - 15 minutes
+#   VeryShort    = 1  - 20 minutes
+#   Short        = 2  - 25 minutes
+#   Medium       = 3  - 30 minutes
+#   Long         = 4  - 35 minutes
+#   VeryLong     = 5  - 45 minutes
+#   Extensive    = 6  - 1 hour
+#   Maximum      = 7  - 2 hours
+vrising_server_war_event_game_settings_minor_duration: 1

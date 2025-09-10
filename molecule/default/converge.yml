@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+
+  roles:
+    - role: steamcmd
+    - role: vrising_server
+      vrising_server_password: changeme

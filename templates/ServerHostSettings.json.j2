@@ -1,0 +1,31 @@
+{
+  "_comment": "{{ ansible_managed }}",
+  "Name": "{{ vrising_server_name }}",
+  "Description": "{{ vrising_server_description }}",
+  "Port": {{ vrising_server_port }},
+  "QueryPort": {{ vrising_server_query_port }},
+  "MaxConnectedUsers": {{ vrising_server_max_connected_users }},
+  "MaxConnectedAdmins": {{ vrising_server_max_connected_admins }},
+  "ServerFps": {{ vrising_server_fps }},
+  "SaveName": "{{ vrising_server_save_name }}",
+  "Password": "{{ vrising_server_password }}",
+  "Secure": true,
+  "ListOnSteam": true,
+  "ListOnEOS": true,
+  "ListOnMasterServer": true,
+  "AutoSaveCount": 20,
+  "AutoSaveInterval": 120,
+  "CompressSaveFiles": true,
+  "GameSettingsPreset": "",
+  "GameDifficultyPreset": "",
+  "AdminOnlyDebugEvents": true,
+  "DisableDebugEvents": false,
+  "API": {
+    "Enabled": false
+  },
+  "Rcon": {
+    "Enabled": false,
+    "Port": 25575,
+    "Password": ""
+  }
+}

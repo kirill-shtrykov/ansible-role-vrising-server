@@ -1,0 +1,63 @@
+---
+- name: Install and configure V Rising dedicated server
+  block:
+    - name: Install X11 packages
+      ansible.builtin.package:
+        name:
+          - xserver-xorg
+          - xvfb
+          - xauth
+
+    - name: Create settings directory
+      ansible.builtin.file:
+        path: "{{ vrising_server_data_dir }}/Settings/"
+        state: directory
+        owner: "{{ steamcmd_user }}"
+        group: "{{ steamcmd_user }}"
+        mode: "0755"
+
+    - name: Create Host config
+      ansible.builtin.template:
+        src: ServerHostSettings.json.j2
+        dest: "{{ vrising_server_data_dir }}/Settings/ServerHostSettings.json"
+        owner: "{{ steamcmd_user }}"
+        group: "{{ steamcmd_user }}"
+        mode: "0644"
+      notify: Restart vrising-server service
+
+    - name: Create Game config
+      ansible.builtin.template:
+        src: ServerGameSettings.json.j2
+        dest: "{{ vrising_server_data_dir }}/Settings/ServerGameSettings.json"
+        owner: "{{ steamcmd_user }}"
+        group: "{{ steamcmd_user }}"
+        mode: "0644"
+      notify: Restart vrising-server service
+
+    - name: Add vrising-server service
+      ansible.builtin.template:
+        src: vrising-server.service.j2
+        dest: /etc/systemd/system/vrising-server.service
+        mode: "0644"
+      notify: Restart vrising-server service
+      register: service_file
+
+    - name: Reload SystemD daemons
+      ansible.builtin.systemd:
+        daemon_reload: true
+      when:
+        - service_file is defined
+        - service_file.changed
+
+    - name: Configure winehq
+      become: true
+      become_user: "{{ steamcmd_user }}"
+      ansible.builtin.command:
+        cmd: winecfg
+        creates: "{{ steamcmd_user_home }}/.wine"
+
+    - name: Start and enable server
+      ansible.builtin.systemd:
+        name: vrising-server
+        enabled: true
+        state: started

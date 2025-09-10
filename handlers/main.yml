@@ -1,0 +1,5 @@
+---
+- name: Restart vrising-server service
+  ansible.builtin.service:
+    name: vrising-server
+    state: restarted

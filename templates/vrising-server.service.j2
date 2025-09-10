@@ -1,0 +1,20 @@
+{{ ansible_managed | comment }}
+
+[Unit]
+Description=V Rising Dedicated Server
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=exec
+User={{ steamcmd_user }}
+Group={{ steamcmd_user }}
+Environment='DISPLAY=:0.0'
+WorkingDirectory={{ vrising_server_dir }}
+ExecStartPre=/usr/games/steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir {{ vrising_server_dir }} +login anonymous +app_update {{ vrising_server_app_id }} +quit
+ExecStart=/usr/bin/xvfb-run /usr/bin/wine {{ vrising_server_dir }}/VRisingServer.exe -persistentDataPath {{ vrising_server_data_dir }}
+RestartSec=5
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
