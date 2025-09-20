@@ -16,6 +16,7 @@ vrising_server_game_mode_type: PvP
 vrising_server_blood_bound_equipment: true
 vrising_server_teleport_bound_items: true
 vrising_server_bat_bound_items: false
+vrising_server_soul_shard_durability_loss_rate: 1.0
 
 # Interval
 # Defines the time between the war events (Incursions)
